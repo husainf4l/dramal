@@ -1,0 +1,20 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Users collection - allow authenticated users to read/write their own data
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // Allow authenticated users to read/write any user data (for development)
+    // TODO: Restrict this in production
+    match /users/{userId} {
+      allow read, write: if request.auth != null;
+    }
+
+    // Allow all operations for development (remove in production)
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}

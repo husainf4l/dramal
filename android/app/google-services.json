@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "485279782576",
+    "project_id": "cashvan-25d98",
+    "storage_bucket": "cashvan-25d98.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:485279782576:android:0b0f9884e11790dc85cd75",
+        "android_client_info": {
+          "package_name": "com.aqlaan.amal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "485279782576-46ct394nr5q5ifjjt5u354e1meq3eup2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUSq3yGg4IFaVz6_H84r_zSPqtnTs-I6I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "485279782576-46ct394nr5q5ifjjt5u354e1meq3eup2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "485279782576-lv3ubunn89i5q9kalf50lc00gegsq36u.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.lava.xvan.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

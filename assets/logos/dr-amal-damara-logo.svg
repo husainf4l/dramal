@@ -1,0 +1,29 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle -->
+  <circle cx="256" cy="256" r="240" fill="#007AFF" stroke="#0056CC" stroke-width="8"/>
+
+  <!-- Medical Cross -->
+  <rect x="236" y="196" width="40" height="120" fill="white"/>
+  <rect x="216" y="236" width="80" height="40" fill="white"/>
+
+  <!-- Stethoscope -->
+  <circle cx="200" cy="280" r="15" fill="white"/>
+  <circle cx="312" cy="280" r="15" fill="white"/>
+  <path d="M 215 280 Q 256 320 297 280" stroke="white" stroke-width="6" fill="none"/>
+  <path d="M 200 280 L 180 300 L 200 320" stroke="white" stroke-width="4" fill="none"/>
+  <circle cx="180" cy="300" r="8" fill="white"/>
+
+  <!-- Doctor Name Text -->
+  <text x="256" y="380" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="white">Dr. Amal Damara</text>
+  <text x="256" y="405" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="white">Best Dermatologist</text>
+
+  <!-- Star Rating -->
+  <g transform="translate(206, 420)">
+    <polygon points="10,0 13,6 20,6 15,11 17,18 10,14 3,18 5,11 0,6 7,6" fill="#FFD700"/>
+    <polygon points="30,0 33,6 40,6 35,11 37,18 30,14 23,18 25,11 20,6 27,6" fill="#FFD700"/>
+    <polygon points="50,0 53,6 60,6 55,11 57,18 50,14 43,18 45,11 40,6 47,6" fill="#FFD700"/>
+    <polygon points="70,0 73,6 80,6 75,11 77,18 70,14 63,18 65,11 60,6 67,6" fill="#FFD700"/>
+    <polygon points="90,0 93,6 100,6 95,11 97,18 90,14 83,18 85,11 80,6 87,6" fill="#FFD700"/>
+  </g>
+</svg>
+

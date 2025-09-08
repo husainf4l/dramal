@@ -1,0 +1,43 @@
+{
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "cashvan-25d98",
+          "appId": "1:485279782576:android:0b0f9884e11790dc85cd75",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "ios": {
+        "default": {
+          "projectId": "cashvan-25d98",
+          "appId": "1:485279782576:ios:b5ec868037ad801f85cd75",
+          "uploadDebugSymbols": false,
+          "fileOutput": "ios/Runner/GoogleService-Info.plist"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "cashvan-25d98",
+          "configurations": {
+            "android": "1:485279782576:android:0b0f9884e11790dc85cd75",
+            "ios": "1:485279782576:ios:b5ec868037ad801f85cd75",
+            "macos": "1:485279782576:ios:65753117be17793985cd75"
+          }
+        }
+      },
+      "macos": {
+        "default": {
+          "projectId": "cashvan-25d98",
+          "appId": "1:485279782576:ios:65753117be17793985cd75",
+          "uploadDebugSymbols": false,
+          "fileOutput": "macos/Runner/GoogleService-Info.plist"
+        }
+      }
+    }
+  }
+}
