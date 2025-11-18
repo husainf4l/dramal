@@ -180,9 +180,9 @@ Content-Type: application/json
 Authorization: Bearer your-jwt-token-here
 
 {
-  "query": "query GetVisit($id: Int!) { visit(id: $id) { id visitReason visitDate doctorName clinic diagnosis treatment medications notes followUpDate createdAt updatedAt child { firstName lastName dateOfBirth } } }",
+  "query": "query GetVisit($id: UUID!) { visit(id: $id) { id visitReason visitDate doctorName clinic diagnosis treatment medications notes followUpDate createdAt updatedAt child { firstName lastName dateOfBirth } } }",
   "variables": {
-    "id": 1
+    "id": "00000000-0000-0000-0000-000000000001"
   }
 }
 
@@ -192,9 +192,9 @@ Content-Type: application/json
 Authorization: Bearer your-jwt-token-here
 
 {
-  "query": "query GetVisitsByChild($childId: Int!) { visitsByChild(childId: $childId) { id visitReason visitDate doctorName clinic diagnosis treatment medications notes followUpDate createdAt updatedAt } }",
+  "query": "query GetVisitsByChild($childId: UUID!) { visitsByChild(childId: $childId) { id visitReason visitDate doctorName clinic diagnosis treatment medications notes followUpDate createdAt updatedAt } }",
   "variables": {
-    "childId": 1
+    "childId": "00000000-0000-0000-0000-000000000001"
   }
 }
 
@@ -216,7 +216,7 @@ Authorization: Bearer your-jwt-token-here
       "medications": "None",
       "notes": "Child is developing well, all vitals normal",
       "followUpDate": "2025-05-18T10:00:00Z",
-      "childId": 1
+      "childId": "00000000-0000-0000-0000-000000000001"
     }
   }
 }
@@ -230,7 +230,7 @@ Authorization: Bearer your-jwt-token-here
   "query": "mutation UpdateVisit($input: UpdateVisitInput!) { updateVisit(input: $input) { id visitReason visitDate doctorName clinic diagnosis treatment medications notes followUpDate updatedAt } }",
   "variables": {
     "input": {
-      "id": 1,
+      "id": "00000000-0000-0000-0000-000000000001",
       "visitReason": "Annual checkup - Updated",
       "visitDate": "2024-11-18T10:30:00Z",
       "doctorName": "Dr. Smith",
@@ -250,9 +250,9 @@ Content-Type: application/json
 Authorization: Bearer your-jwt-token-here
 
 {
-  "query": "mutation DeleteVisit($id: Int!) { deleteVisit(id: $id) }",
+  "query": "mutation DeleteVisit($id: UUID!) { deleteVisit(id: $id) }",
   "variables": {
-    "id": 1
+    "id": "00000000-0000-0000-0000-000000000001"
   }
 }
 
