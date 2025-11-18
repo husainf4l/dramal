@@ -1,0 +1,259 @@
+@dramal_HostAddress = http://localhost:5236
+# @dramal_HostAddress = https://your-production-url.com
+
+### User Registration
+POST {{dramal_HostAddress}}/register
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "password": "Test123!",
+  "firstName": "John",
+  "lastName": "Doe"
+}
+
+### User Login
+POST {{dramal_HostAddress}}/login
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "password": "Test123!"
+}
+
+### Refresh Token
+POST {{dramal_HostAddress}}/refresh-token
+Content-Type: application/json
+
+{
+  "refreshToken": "your-refresh-token-here"
+}
+
+### GraphQL Introspection Query
+POST {{dramal_HostAddress}}/graphql
+Content-Type: application/json
+Authorization: Bearer your-jwt-token-here
+
+{
+  "query": "query IntrospectionQuery { __schema { types { name kind description fields { name type { name kind } } } } }"
+}
+
+### GraphQL - Register User
+POST {{dramal_HostAddress}}/graphql
+Content-Type: application/json
+
+{
+  "query": "mutation Register($input: RegisterInput!) { register(input: $input) { token refreshToken expiration user { id email firstName lastName roles } } }",
+  "variables": {
+    "input": {
+      "email": "test@example.com",
+      "password": "Test123!",
+      "firstName": "John",
+      "lastName": "Doe"
+    }
+  }
+}
+
+### GraphQL - Login User
+POST {{dramal_HostAddress}}/graphql
+Content-Type: application/json
+
+{
+  "query": "mutation Login($input: LoginInput!) { login(input: $input) { token refreshToken expiration user { id email firstName lastName roles } } }",
+  "variables": {
+    "input": {
+      "email": "test@example.com",
+      "password": "Test123!"
+    }
+  }
+}
+
+### GraphQL - Refresh Token
+POST {{dramal_HostAddress}}/graphql
+Content-Type: application/json
+
+{
+  "query": "mutation RefreshToken($input: RefreshTokenInput!) { refreshToken(input: $input) { token refreshToken expiration user { id email firstName lastName roles } } }",
+  "variables": {
+    "input": {
+      "refreshToken": "your-refresh-token-here"
+    }
+  }
+}
+
+### GraphQL - Revoke Token
+POST {{dramal_HostAddress}}/graphql
+Content-Type: application/json
+Authorization: Bearer your-jwt-token-here
+
+{
+  "query": "mutation RevokeToken($input: RefreshTokenInput!) { revokeToken(input: $input) }",
+  "variables": {
+    "input": {
+      "refreshToken": "your-refresh-token-here"
+    }
+  }
+}
+
+### GraphQL - Get All Children (requires authentication)
+POST {{dramal_HostAddress}}/graphql
+Content-Type: application/json
+Authorization: Bearer your-jwt-token-here
+
+{
+  "query": "query GetChildren { children { id firstName lastName dateOfBirth gender notes createdAt updatedAt user { firstName lastName email } } }"
+}
+
+### GraphQL - Get Child by ID (requires authentication)
+POST {{dramal_HostAddress}}/graphql
+Content-Type: application/json
+Authorization: Bearer your-jwt-token-here
+
+{
+  "query": "query GetChild($id: UUID!) { child(id: $id) { id firstName lastName dateOfBirth gender notes createdAt updatedAt user { firstName lastName email } } }",
+  "variables": {
+    "id": "00000000-0000-0000-0000-000000000001"
+  }
+}
+
+### GraphQL - Create Child (requires authentication)
+POST {{dramal_HostAddress}}/graphql
+Content-Type: application/json
+Authorization: Bearer your-jwt-token-here
+
+{
+  "query": "mutation CreateChild($input: CreateChildInput!) { createChild(input: $input) { id firstName lastName dateOfBirth gender notes createdAt user { firstName lastName } } }",
+  "variables": {
+    "input": {
+      "firstName": "Alice",
+      "lastName": "Johnson",
+      "dateOfBirth": "2015-05-15",
+      "gender": "Female",
+      "notes": "Loves drawing and music"
+    }
+  }
+}
+
+### GraphQL - Update Child (requires authentication)
+POST {{dramal_HostAddress}}/graphql
+Content-Type: application/json
+Authorization: Bearer your-jwt-token-here
+
+{
+  "query": "mutation UpdateChild($input: UpdateChildInput!) { updateChild(input: $input) { id firstName lastName dateOfBirth gender notes updatedAt } }",
+  "variables": {
+    "input": {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "firstName": "Alice Marie",
+      "lastName": "Johnson-Smith",
+      "dateOfBirth": "2015-05-15",
+      "gender": "Female",
+      "notes": "Loves drawing, music, and soccer"
+    }
+  }
+}
+
+### GraphQL - Delete Child (requires authentication)
+POST {{dramal_HostAddress}}/graphql
+Content-Type: application/json
+Authorization: Bearer your-jwt-token-here
+
+{
+  "query": "mutation DeleteChild($id: UUID!) { deleteChild(id: $id) }",
+  "variables": {
+    "id": "00000000-0000-0000-0000-000000000001"
+  }
+}
+
+### GraphQL - Get All Visits (requires authentication)
+POST {{dramal_HostAddress}}/graphql
+Content-Type: application/json
+Authorization: Bearer your-jwt-token-here
+
+{
+  "query": "query GetVisits { visits { id visitReason visitDate doctorName clinic diagnosis treatment medications notes followUpDate createdAt updatedAt child { firstName lastName } } }"
+}
+
+### GraphQL - Get Visit by ID (requires authentication)
+POST {{dramal_HostAddress}}/graphql
+Content-Type: application/json
+Authorization: Bearer your-jwt-token-here
+
+{
+  "query": "query GetVisit($id: Int!) { visit(id: $id) { id visitReason visitDate doctorName clinic diagnosis treatment medications notes followUpDate createdAt updatedAt child { firstName lastName dateOfBirth } } }",
+  "variables": {
+    "id": 1
+  }
+}
+
+### GraphQL - Get Visits by Child ID (requires authentication)
+POST {{dramal_HostAddress}}/graphql
+Content-Type: application/json
+Authorization: Bearer your-jwt-token-here
+
+{
+  "query": "query GetVisitsByChild($childId: Int!) { visitsByChild(childId: $childId) { id visitReason visitDate doctorName clinic diagnosis treatment medications notes followUpDate createdAt updatedAt } }",
+  "variables": {
+    "childId": 1
+  }
+}
+
+### GraphQL - Create Visit (requires authentication)
+POST {{dramal_HostAddress}}/graphql
+Content-Type: application/json
+Authorization: Bearer your-jwt-token-here
+
+{
+  "query": "mutation CreateVisit($input: CreateVisitInput!) { createVisit(input: $input) { id visitReason visitDate doctorName clinic diagnosis treatment medications notes followUpDate createdAt child { firstName lastName } } }",
+  "variables": {
+    "input": {
+      "visitReason": "Annual checkup",
+      "visitDate": "2024-11-18T10:00:00Z",
+      "doctorName": "Dr. Smith",
+      "clinic": "Children's Health Clinic",
+      "diagnosis": "Healthy development",
+      "treatment": "Continue regular diet and exercise",
+      "medications": "None",
+      "notes": "Child is developing well, all vitals normal",
+      "followUpDate": "2025-05-18T10:00:00Z",
+      "childId": 1
+    }
+  }
+}
+
+### GraphQL - Update Visit (requires authentication)
+POST {{dramal_HostAddress}}/graphql
+Content-Type: application/json
+Authorization: Bearer your-jwt-token-here
+
+{
+  "query": "mutation UpdateVisit($input: UpdateVisitInput!) { updateVisit(input: $input) { id visitReason visitDate doctorName clinic diagnosis treatment medications notes followUpDate updatedAt } }",
+  "variables": {
+    "input": {
+      "id": 1,
+      "visitReason": "Annual checkup - Updated",
+      "visitDate": "2024-11-18T10:30:00Z",
+      "doctorName": "Dr. Smith",
+      "clinic": "Children's Health Clinic",
+      "diagnosis": "Healthy development, slight weight gain needed",
+      "treatment": "Increase protein intake, continue regular exercise",
+      "medications": "Children's multivitamin",
+      "notes": "Child is developing well, recommend more protein in diet",
+      "followUpDate": "2025-05-18T10:30:00Z"
+    }
+  }
+}
+
+### GraphQL - Delete Visit (requires authentication)
+POST {{dramal_HostAddress}}/graphql
+Content-Type: application/json
+Authorization: Bearer your-jwt-token-here
+
+{
+  "query": "mutation DeleteVisit($id: Int!) { deleteVisit(id: $id) }",
+  "variables": {
+    "id": 1
+  }
+}
+
+###
